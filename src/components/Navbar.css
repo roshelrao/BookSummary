@@ -1,0 +1,47 @@
+.navbar {
+    background:#9E2A2B;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+.navbar-container {
+background:#9E2A2B;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 80px;
+max-width: 1500px;
+}
+
+.nav-menu {
+    background:#9E2A2B;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 80px;
+    list-style: none;
+    text-align: center;
+    width: 80vw;
+    justify-content: center;
+    margin-right: 4rem;
+    }
+
+.nav-item {
+    background:#9E2A2B;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    height: 100%;
+    }
+
+#nav-logo{
+    font-family: 'Marck Script', cursive;
+    font-size: 30px;
+}
