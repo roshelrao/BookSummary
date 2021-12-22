@@ -12,6 +12,9 @@ function MainSection() {
         <p>BookSummary summarizes any book into a one page document which will contain all the important points in the book you want to read.</p>
         </div>
         </div>
+        <div className='most-popular-section'>
+            <p>Most popular books</p>
+        </div>
         </>
     )
 }
