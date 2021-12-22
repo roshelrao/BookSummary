@@ -13,3 +13,10 @@
     width:430px;
     height: 320p;
 }
+
+.most-popular-section > p{
+    text-align: center;
+    font-family: 'Marck Script', cursive;
+    font-size: 30px;
+    margin-top: 40px;
+}
