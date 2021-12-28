@@ -17,11 +17,11 @@ function Navbar() {
                 <Link to='/' className='nav-item' id='nav-logo'>
                     BookSummary
                 </Link>
-                <Link to='/about' className='nav-item'>
-                    About us
+                <Link to='/login' className='nav-item'>
+                    Login
                 </Link>
                 <Link to='/contact' className='nav-item'>
-                    Contact us
+                    Contact
                 </Link>
                 </ul>
             </div>
