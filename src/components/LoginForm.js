@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import Button from './Button';
 
@@ -13,7 +14,7 @@ function LoginForm(){
                     <label>Password: 
                         <input type="password" name="pass"></input>
                     </label>
-                    <a href='{Home}'>Dont't have an account? Register now!</a> <br></br>
+                    <Link to ='/register'><a>Dont't have an account? Register now!</a> </Link><br></br>
                     <Button buttonStyle='btn--outline' buttonSize='btn--large'>Login</Button>
                 </form>
         </>
