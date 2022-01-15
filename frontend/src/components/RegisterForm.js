@@ -19,7 +19,9 @@ function RegisterForm(){
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify({"fname":fname, "lname":lname, "email":email, "pass":pass})
         }).then(res => {
-            console.log("User added", res);
+            console.log("User added");
+            alert("Registration Complete!")
+            window.location = '/login';
         });
     }
     
