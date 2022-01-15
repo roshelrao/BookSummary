@@ -1,14 +1,15 @@
 .cards{
     height: 380px;
     width: 380px;
-    margin-left: 80px;
+    display:grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 50px;
+    margin-left: 50px;
+    row-gap: 50px;
 }
 
 .cards-items{
     background: white;
-    display: flex;
-    column-gap: 30px;
-    margin-bottom: 30px;
 }
 
 .cards-item-img{
@@ -38,3 +39,8 @@ center{
     background: white;
     padding: 10px;
 }
+
+/* .cards{
+    display:grid;
+    grid-template-columns: auto auto auto;
+} */
