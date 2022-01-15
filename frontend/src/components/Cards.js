@@ -24,10 +24,11 @@ function Cards() {
  
     return(
         <div className='cards'>
-                {bookList.map((book,) => (
+                {bookList.map((book) => (
                 <CardItem
-                src= '/images/books.jpg'
-                text={book.title}/>
+                src='/images/books.jpg'
+                text={book.title}
+                id={book.bookId}/>
                 ))}
         </div> 
     )
