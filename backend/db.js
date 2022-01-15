@@ -69,6 +69,18 @@ app.post('/login', function(req,res){
   })
 })
   
+app.get('/books/:id', function(req,res){
+  var id = req.params.id;
+  
+  con.query("SELECT * FROM book_summary WHERE bookId=?", [id] ,function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+    }
+  })
+})
+
 app.listen(3500, () =>{
     console.log("Book summary server running");
 })

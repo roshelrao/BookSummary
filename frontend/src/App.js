@@ -5,6 +5,7 @@ import Home from './components/pages/Home';
 import Contact from './components/pages/Contact';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
+import Summary from './components/Summary';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/contact' exact element={<Contact/>}/>
         <Route path='/login' exact element={<Login/>}/>
         <Route path='/register' exact element={<Register/>}/>
+        <Route path='/summary/:id' exact element={<Summary/>}/>
       </Routes>
     </Router>
     </>
