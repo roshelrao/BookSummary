@@ -21,14 +21,12 @@ export const Button = ({
     :SIZES[0];
 
     return(
-        <Link to='/view-book' className='btn-view'>
             <button 
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             type={type}
             >
                 {children}
             </button>
-        </Link>
     )
 }
 

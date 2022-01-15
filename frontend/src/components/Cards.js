@@ -1,32 +1,34 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import CardItem from "./CardItem"
 import './Cards.css'
 
 function Cards() {
+
+    const [bookList, setBookList] = useState([]);
+
+    const getBooks = () =>{
+        fetch('http://localhost:3500/getBooks', {
+            method:'GET',
+        }).then(res => {
+           return res.json();
+        }).then(data => {
+            setBookList(data);
+        });
+    }
+
+    useEffect(() => {
+        getBooks();
+    }, []) 
+
+    //console.log(bookList);
+ 
     return(
         <div className='cards'>
-            <ul className='cards-items'>
+                {bookList.map((book,) => (
                 <CardItem
-                src='/images/books.jpg'
-                text="101 essays that will change the way you think"/>
-                <CardItem
-                src='/images/books.jpg'
-                text="101 books that will change your life"/>
-                <CardItem
-                src='/images/books.jpg'
-                text="101 books that will change your life"/>
-            </ul>
-            <ul className='cards-items'>
-                <CardItem
-                src='/images/books.jpg'
-                text="101 books that will change your life"/>
-                <CardItem
-                src='/images/books.jpg'
-                text="101 books that will change your life"/>
-                <CardItem
-                src='/images/books.jpg'
-                text="101 books that will change your life"/>
-            </ul>
+                src= '/images/books.jpg'
+                text={book.title}/>
+                ))}
         </div> 
     )
 }
