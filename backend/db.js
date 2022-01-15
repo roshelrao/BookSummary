@@ -54,6 +54,20 @@ app.post('/register', function(req,res){
     }
   })
 })
+
+app.post('/login', function(req,res){
+  var email = req.body.email;
+  var pass = req.body.pass;
+
+  con.query("(SELECT * FROM users WHERE email=? AND password=?)",[email,pass], function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+      console.log(result);
+    }
+  })
+})
   
 app.listen(3500, () =>{
     console.log("Book summary server running");

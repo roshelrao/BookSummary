@@ -14,6 +14,9 @@ function RegisterForm(){
         const email = event.target.email.value; 
         const pass = event.target.pass.value; 
     
+        if(fname || lname || email || pass == ""){
+            alert("Please fill all the details");
+        }else{
         fetch('http://localhost:3500/register', {
             method:'POST',
             headers: {'Content-Type': 'application/json'}, 
@@ -23,6 +26,7 @@ function RegisterForm(){
             alert("Registration Complete!")
             window.location = '/login';
         });
+        }
     }
     
     return(
