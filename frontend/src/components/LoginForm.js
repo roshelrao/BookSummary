@@ -24,7 +24,7 @@ function LoginForm(){
             console.log(data);
         })
 
-        if(result == ""){
+        if(result === ""){
             alert("Invalid email or password");
         }else{
             window.location = '/';
