@@ -6,6 +6,7 @@ import Contact from './components/pages/Contact';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Summary from './components/Summary';
+import Categories from './components/Categories';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/login' exact element={<Login/>}/>
         <Route path='/register' exact element={<Register/>}/>
         <Route path='/summary/:id' exact element={<Summary/>}/>
+        <Route path='/categories' exact element={<Categories/>}/>
       </Routes>
     </Router>
     </>

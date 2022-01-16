@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import './Summary.css'
 
 function Summary(props) {
 
@@ -30,7 +31,7 @@ function Summary(props) {
             ))}
 
             {bookSummary.map((summary) => (
-                <h1>{summary.description}</h1>
+                <p>{summary.description}</p>
             ))}
         </>
     )

@@ -7,8 +7,7 @@ app.use(express.json());
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
-  database: "books"
+  password: ""
 });
 
 con.connect(function(err) {
@@ -18,7 +17,7 @@ con.connect(function(err) {
       if (err) throw err;
       console.log("Database created");
     });
-    con.query("CREATE TABLE IF NOT EXISTS books.book_summary (bookId int not null auto_increment primary key, title VARCHAR(100), description VARCHAR(255), image varchar(100))", function (err, result) {
+    con.query("CREATE TABLE IF NOT EXISTS books.book_summary (bookId int not null auto_increment primary key, title VARCHAR(100), description VARCHAR(10000), image varchar(100))", function (err, result) {
         if (err) throw err;
         console.log("Table book_summary created");
       });
@@ -29,7 +28,7 @@ con.connect(function(err) {
   });
 
 app.get('/getBooks', function(req,res){
-  con.query("SELECT * FROM book_summary", function(err, result){
+  con.query("SELECT * FROM books.book_summary", function(err, result){
     if (err){
       console.log(err);
     }else{
@@ -45,7 +44,7 @@ app.post('/register', function(req,res){
   var email = req.body.email;
   var pass = req.body.pass;
 
-  con.query("INSERT INTO users (fname, lname, email, password) values (?,?,?,?)",[fname,lname,email,pass], function(err,result){
+  con.query("INSERT INTO books.users (fname, lname, email, password) values (?,?,?,?)",[fname,lname,email,pass], function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -59,7 +58,7 @@ app.post('/login', function(req,res){
   var email = req.body.email;
   var pass = req.body.pass;
 
-  con.query("(SELECT * FROM users WHERE email=? AND password=?)",[email,pass], function(err,result){
+  con.query("(SELECT * FROM books.users WHERE email=? AND password=?)",[email,pass], function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -72,7 +71,7 @@ app.post('/login', function(req,res){
 app.get('/books/:id', function(req,res){
   var id = req.params.id;
   
-  con.query("SELECT * FROM book_summary WHERE bookId=?", [id] ,function(err,result){
+  con.query("SELECT * FROM books.book_summary WHERE bookId=?", [id] ,function(err,result){
     if(err){
       console.log(err);
     }else{
@@ -80,6 +79,7 @@ app.get('/books/:id', function(req,res){
     }
   })
 })
+
 
 app.listen(3500, () =>{
     console.log("Book summary server running");
