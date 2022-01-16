@@ -6,6 +6,7 @@ import Button from './Button';
 function LoginForm(){
 
     const[result, setResult] = useState([]);
+    const[userId, setUserId] = useState(0);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -13,6 +14,10 @@ function LoginForm(){
         const email = event.target.email.value;
         const pass = event.target.pass.value;
 
+
+        if(email === "" || pass === ""){
+            alert("Please fill all the details");
+        }else{
         fetch('http://localhost:3500/login',{
             method:'post',
             headers: {'Content-Type': 'application/json'},
@@ -21,13 +26,15 @@ function LoginForm(){
             return res.json();
         }).then(data => {
             setResult(data);
-            console.log(data);
-        })
+            //setUserId(data[0].userId);
+        })}
 
-        if(result === ""){
-            alert("Invalid email or password");
-        }else{
+    console.log(result);
+
+        if(result.length >= 1){
             window.location = '/';
+        }else{
+            alert("Invalid username and password");
         }
         
     }
