@@ -80,6 +80,19 @@ app.get('/books/:id', function(req,res){
   })
 })
 
+app.post('/add', function(req,res){
+  var title = req.body.title;
+  var description = req.body.description;
+  var image = req.body.image;
+
+  con.query("INSERT INTO books.book_summary (title, description, image) VALUES (?,?,?)", [title, description, image] , function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result);
+    }
+  })
+})
 
 app.listen(3500, () =>{
     console.log("Book summary server running");
