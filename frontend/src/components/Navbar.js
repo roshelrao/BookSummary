@@ -4,6 +4,11 @@ import './Navbar.css'
 
 function Navbar() {
 
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     return (
         <>
         <nav className='navbar'>
@@ -17,10 +22,16 @@ function Navbar() {
                 </Link>
                 <Link to='/' className='nav-item' id='nav-logo'>
                     BookSummary
+                </Link> 
+                { "user" in localStorage ? (
+                <Link to='/' onClick={logout} className='nav-item'>
+                    Logout
                 </Link>
+                ) : 
                 <Link to='/login' className='nav-item'>
                     Login
                 </Link>
+                }
                 <Link to='/contact' className='nav-item'>
                     Contact
                 </Link>

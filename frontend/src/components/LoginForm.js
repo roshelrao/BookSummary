@@ -6,7 +6,6 @@ import Button from './Button';
 function LoginForm(){
 
     const[result, setResult] = useState([]);
-    const[userId, setUserId] = useState(0);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -26,15 +25,15 @@ function LoginForm(){
             return res.json();
         }).then(data => {
             setResult(data);
-            //setUserId(data[0].userId);
         })}
 
-    console.log(result);
+        console.log(result);
 
-        if(result.length >= 1){
-            window.location = '/';
-        }else{
+        if(result.length == 0){
             alert("Invalid username and password");
+        }else{
+            localStorage.setItem('user', JSON.stringify(result));
+            window.location = '/';
         }
         
     }
