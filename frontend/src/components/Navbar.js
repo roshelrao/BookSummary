@@ -32,9 +32,15 @@ function Navbar() {
                     Login
                 </Link>
                 }
+                { "user" in localStorage ? (
+                <Link to='/myBooks' className='nav-item'>
+                    My Books
+                </Link>
+                ):
                 <Link to='/contact' className='nav-item'>
                     Contact
                 </Link>
+                 }
                 </ul>
             </div>
         </nav>
