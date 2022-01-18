@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import './Summary.css'
+import Button from './Button';
 
 function Summary(props) {
 
@@ -9,6 +10,7 @@ function Summary(props) {
     console.log(id);
 
     const[bookSummary, setBookSummary] = useState([]);
+    const[savedStatus, setSavedStatus] = useState("Save");
 
     const getBookSummary=() => {
         fetch(`http://localhost:3500/books/${id}`,{
@@ -23,12 +25,26 @@ function Summary(props) {
     useEffect(() => {
         getBookSummary();
     }, [])
+
+    const checkLogin = () => {
+        if("user" in localStorage){
+            alert("Book Saved");
+            setSavedStatus("Saved");
+        }else{
+            alert("Please login to save the summary!");
+            window.location = '/login';
+        }
+    }
     
     return (
         <>
             {bookSummary.map((summary) => (
                 <h1>{summary.title}</h1>
             ))}
+
+            <center class="center">
+                <Button buttonStyle='btn--outline' buttonSize='btn--medium' onClick={checkLogin}>{savedStatus}</Button>
+            </center>
 
             {bookSummary.map((summary) => (
                 <p>{summary.description}</p>
