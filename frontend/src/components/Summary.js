@@ -7,7 +7,7 @@ function Summary(props) {
 
     // const bookId = this.props.match.params.id;
     const { id } = useParams();
-    console.log(id);
+    //console.log(id);
 
     const[bookSummary, setBookSummary] = useState([]);
     const[savedStatus, setSavedStatus] = useState("Save");
@@ -27,7 +27,16 @@ function Summary(props) {
     }, [])
 
     const checkLogin = () => {
+
+        const user = JSON.parse(localStorage.getItem("user"));
+        const userid = (user[0].userId);
+
         if("user" in localStorage){
+            // fetch('/saveBook', {
+            //     method:'POST',
+            //     headers: {'Content-Type': 'application/json'}, 
+            //     body: JSON.stringify({"bookid":id, "userid":userid})
+            // })
             alert("Book Saved");
             setSavedStatus("Saved");
         }else{

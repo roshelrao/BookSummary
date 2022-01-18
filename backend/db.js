@@ -58,7 +58,7 @@ app.post('/login', function(req,res){
   var email = req.body.email;
   var pass = req.body.pass;
 
-  con.query("(SELECT * FROM books.users WHERE email=? AND password=?)",[email,pass], function(err,result){
+  con.query("(SELECT userId FROM books.users WHERE email=? AND password=?)",[email,pass], function(err,result){
     if(err){
       console.log(err);
     }else{
