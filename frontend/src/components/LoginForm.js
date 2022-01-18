@@ -32,7 +32,7 @@ function LoginForm(){
         if(result.length == 0){
             alert("Invalid username and password");
         }else{
-            localStorage.setItem('user', JSON.stringify(result));
+            sessionStorage.setItem('user', JSON.stringify(result));
             window.location = '/';
         }
         
