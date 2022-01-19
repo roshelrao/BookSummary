@@ -5,7 +5,7 @@ import './Navbar.css'
 function Navbar() {
 
     const logout = () => {
-        localStorage.clear();
+        sessionStorage.clear();
         window.location.reload();
     }
 
@@ -23,7 +23,7 @@ function Navbar() {
                 <Link to='/' className='nav-item' id='nav-logo'>
                     BookSummary
                 </Link> 
-                { "user" in localStorage ? (
+                { "user" in sessionStorage ? (
                 <Link to='/' onClick={logout} className='nav-item'>
                     Logout
                 </Link>
@@ -32,7 +32,7 @@ function Navbar() {
                     Login
                 </Link>
                 }
-                { "user" in localStorage ? (
+                { "user" in sessionStorage ? (
                 <Link to='/myBooks' className='nav-item'>
                     My Books
                 </Link>
