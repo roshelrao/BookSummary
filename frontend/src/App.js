@@ -8,6 +8,7 @@ import Register from './components/pages/Register';
 import Summary from './components/Summary';
 import Categories from './components/Categories';
 import AddNew from './components/AddNew';
+import MyBooks from './components/MyBooks';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/summary/:id' exact element={<Summary/>}/>
         <Route path='/categories' exact element={<Categories/>}/>
         <Route path='/addNew' exact element={<AddNew/>}/>
+        <Route path='/myBooks' exact element={<MyBooks/>}/>
       </Routes>
     </Router>
     </>
