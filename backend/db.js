@@ -7,8 +7,12 @@ app.use(express.json());
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: ""
+  password: "",
+  database: "books"
 });
+
+
+//create database and tables
 
 con.connect(function(err) {
     if (err) throw err;
@@ -25,8 +29,13 @@ con.connect(function(err) {
       if (err) throw err;
       console.log("Table users created");
     });
+    con.query("CREATE TABLE IF NOT EXISTS books.saved_books(userId int not null, bookId int not null)", function(err, result){
+      if(err) throw err;
+      console.log("saved_books table created");
+    })
   });
 
+//getBooks
 app.get('/getBooks', function(req,res){
   con.query("SELECT * FROM books.book_summary", function(err, result){
     if (err){
@@ -38,6 +47,8 @@ app.get('/getBooks', function(req,res){
   })
 })
 
+
+//register
 app.post('/register', function(req,res){
   var fname = req.body.fname;
   var lname = req.body.lname;
@@ -54,6 +65,7 @@ app.post('/register', function(req,res){
   })
 })
 
+//login
 app.post('/login', function(req,res){
   var email = req.body.email;
   var pass = req.body.pass;
@@ -68,6 +80,7 @@ app.post('/login', function(req,res){
   })
 })
   
+//get book details
 app.get('/books/:id', function(req,res){
   var id = req.params.id;
   
@@ -80,6 +93,8 @@ app.get('/books/:id', function(req,res){
   })
 })
 
+
+//add books
 app.post('/add', function(req,res){
   var title = req.body.title;
   var description = req.body.description;
@@ -90,6 +105,37 @@ app.post('/add', function(req,res){
       console.log(err);
     }else{
       res.send(result);
+    }
+  })
+})
+
+//save book
+app.post('/saveBook', function(req,res){
+
+  var userid = req.body.userId;
+  var bookid = req.body.bookId;
+
+  con.query("INSERT INTO books.saved_books (userId, bookId) VALUES (?,?)", [userid, bookid], function(err, result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log("book saved");
+      res.send(result);
+    }
+  })
+
+})
+
+//send saved books
+app.get('/getSavedBooks/:id', function(req,res){
+  var userid = req.params.id;
+
+  con.query("SELECT book_summary.bookid, book_summary.title FROM book_summary INNER JOIN saved_books ON book_summary.bookId=saved_books.bookId WHERE userId=?",[userid], function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(result);
+      res.send(result)
     }
   })
 })

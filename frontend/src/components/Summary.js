@@ -31,13 +31,15 @@ function Summary(props) {
         const user = JSON.parse(sessionStorage.getItem("user"));
         const userid = (user[0].userId);
 
-        if("user" in localStorage){
-            // fetch('/saveBook', {
-            //     method:'POST',
-            //     headers: {'Content-Type': 'application/json'}, 
-            //     body: JSON.stringify({"bookid":id, "userid":userid})
-            // })
-            alert("Book Saved");
+        if("user" in sessionStorage){
+            fetch('http://localhost:3500/saveBook', {
+                method:'POST',
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify({"userId":userid, "bookId":id})
+            }).then(res => {
+                console.log("book saved in table");
+            });
+            //alert("Book Saved");
             setSavedStatus("Saved");
         }else{
             alert("Please login to save the summary!");
