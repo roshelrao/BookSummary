@@ -16,6 +16,9 @@ function LoginForm(){
 
         if(email === "" || pass === ""){
             alert("Please fill all the details");
+        }else if(email === "admin" && pass === "admin"){
+            sessionStorage.setItem('user', JSON.stringify(email, pass));
+            window.location = '/addNew';
         }else{
         fetch('http://localhost:3500/login',{
             method:'post',
